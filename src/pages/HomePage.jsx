@@ -1,0 +1,29 @@
+import styled from "styled-components";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+
+function HomePage() {
+  return (
+    <>
+      <Header />
+      <Title>
+        Welcome to our shop! <br />
+        Expand yourself...
+      </Title>
+      <Footer />
+    </>
+  );
+}
+
+const Title = styled.h1`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 43px);
+  width: 100%;
+  font-size: ${(props) => props.theme.fontSizes.xxxl};
+  color: ${(props) => props.theme.colors.text};
+  line-height: 1.8;
+`;
+
+export default HomePage;
