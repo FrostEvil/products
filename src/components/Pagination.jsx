@@ -28,15 +28,25 @@ function Pagination({ allPages, page }) {
     );
   });
 
-  return <PaginationWrapper>{renderedPages}</PaginationWrapper>;
+  return (
+    <PaginationWrapper>
+      {renderedPages.length === 1 ? "" : renderedPages}
+    </PaginationWrapper>
+  );
 }
 
 const PaginationWrapper = styled.div`
   margin-top: 24px;
   padding: 8px 0;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   column-gap: 24px;
+  row-gap: 12px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    margin-top: 12px;
+  }
 `;
 
 const PageLink = styled(Link)`
@@ -45,13 +55,21 @@ const PageLink = styled(Link)`
 `;
 
 const PageText = styled.p`
-  font-size: ${(props) => props.theme.fontSizes.lg};
-  color: ${(props) => props.theme.colors.text};
+  font-size: ${({ theme }) => theme.fontSizes.lg};
+  color: ${({ theme }) => theme.colors.text};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: ${({ theme }) => theme.fontSizes.base};
+  }
 `;
 
 const PageTextHighlight = styled.p`
-  font-size: ${(props) => props.theme.fontSizes.xl};
-  color: ${(props) => props.theme.colors.highlightText};
+  font-size: ${({ theme }) => theme.fontSizes.xl};
+  color: ${({ theme }) => theme.colors.highlightText};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: ${({ theme }) => theme.fontSizes.lg};
+  }
 `;
 
 export default Pagination;

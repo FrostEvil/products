@@ -15,6 +15,11 @@ const Panel = styled.div`
   border-radius: 4px;
   background-color: white;
   cursor: pointer;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: ${({ theme }) => theme.fontSizes.sm};
+    padding: ${(props) => (props.$padding ? "4px" : 0)};
+  }
 `;
 
 export default DropdownPanel;

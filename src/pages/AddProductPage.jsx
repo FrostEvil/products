@@ -9,7 +9,7 @@ function AddProductPage() {
     <>
       <Header />
       <ContentWrapper>
-        <AddProductPageTitle>add product</AddProductPageTitle>
+        <AddProductPageTitle>Add product</AddProductPageTitle>
         <AddProductForm />
       </ContentWrapper>
       <Footer />
@@ -21,8 +21,8 @@ const AddProductPageTitle = styled.h2`
   padding-top: 64px;
   display: flex;
   justify-content: center;
-  color: ${(props) => props.theme.colors.text};
-  font-size: ${(props) => props.theme.fontSizes.xl};
+  color: ${({ theme }) => theme.colors.text};
+  font-size: ${({ theme }) => theme.fontSizes.xl};
   text-transform: uppercase;
 `;
 

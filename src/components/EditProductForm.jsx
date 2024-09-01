@@ -3,36 +3,39 @@ import { basicSchema } from "../schemas/basicSchema";
 import FormInput from "./FormInput";
 import styled from "styled-components";
 import FormSelect from "./FormSelect";
-import { addNewProduct } from "../api/addNewProduct";
 import { ModalContext } from "../context/ModalContext";
 import { useContext } from "react";
+import { editProduct } from "../api/editProduct";
 
-function AddProductForm() {
+function EditProductForm({ product }) {
   const { openModal } = useContext(ModalContext);
 
   const handleSubmit = async (values, actions) => {
-    const result = await addNewProduct(values);
+    const result = await editProduct({ ...values, id: product.id });
     if (result.id) {
-      openModal("Product added succesfully!");
+      openModal("Correctly edited product!");
     } else if (result.message) {
       openModal(result.message);
     }
     actions.resetForm();
   };
 
+  const initialValues = {
+    title: product.title,
+    price: product.price,
+    description: product.description,
+    category: product.category,
+    rating: {
+      rate: product.rating?.rate,
+      count: product.rating?.count,
+    },
+  };
+
   return (
     <FormWrapper>
       <Formik
-        initialValues={{
-          title: "",
-          price: "",
-          description: "",
-          category: "",
-          rating: {
-            rate: "",
-            count: "",
-          },
-        }}
+        initialValues={initialValues}
+        enableReinitialize={true}
         validationSchema={basicSchema}
         onSubmit={handleSubmit}
       >
@@ -132,4 +135,4 @@ const SubmitButton = styled.button`
   }
 `;
 
-export default AddProductForm;
+export default EditProductForm;

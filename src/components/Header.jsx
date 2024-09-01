@@ -16,7 +16,11 @@ const HeaderWrapper = styled.header`
   top: 0;
   width: 100%;
   padding: 12px 0;
-  background-color: ${(props) => props.theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.primary};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 0;
+  }
 `;
 
 export default Header;

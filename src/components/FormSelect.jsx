@@ -17,7 +17,7 @@ const SelectWrapper = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 4px;
-  font-size: ${(props) => props.theme.fontSizes.base};
+  font-size: ${({ theme }) => theme.fontSizes.base};
 `;
 
 const Label = styled.label`
@@ -28,7 +28,7 @@ const Select = styled.select`
   padding: 8px;
   min-width: 300px;
   border-radius: 4px;
-  font-size: ${(props) => props.theme.fontSizes.base};
+  font-size: ${({ theme }) => theme.fontSizes.base};
 `;
 
 const ErrorMsg = styled.p`

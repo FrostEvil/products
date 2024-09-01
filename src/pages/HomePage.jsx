@@ -10,6 +10,30 @@ function HomePage() {
         Welcome to our shop! <br />
         Expand yourself...
       </Title>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
       <Footer />
     </>
   );
@@ -21,8 +45,8 @@ const Title = styled.h1`
   justify-content: center;
   height: calc(100vh - 43px);
   width: 100%;
-  font-size: ${(props) => props.theme.fontSizes.xxxl};
-  color: ${(props) => props.theme.colors.text};
+  font-size: ${({ theme }) => theme.fontSizes.xxxl};
+  color: ${({ theme }) => theme.colors.text};
   line-height: 1.8;
 `;
 

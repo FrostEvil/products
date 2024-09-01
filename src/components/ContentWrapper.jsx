@@ -10,6 +10,10 @@ const Container = styled.div`
   min-height: calc(100vh - 43px);
   width: 100%;
   margin: 0 auto;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.xl}) {
+    padding: 0 16px;
+  }
 `;
 
 export default ContentWrapper;

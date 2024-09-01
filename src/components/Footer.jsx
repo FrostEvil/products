@@ -16,12 +16,12 @@ const FooterWrapper = styled.footer`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${(props) => props.theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.primary};
 `;
 
 const FooterText = styled.p`
-  color: ${(props) => props.theme.colors.text};
-  font-size: ${(props) => props.theme.fontSizes.base};
+  color: ${({ theme }) => theme.colors.text};
+  font-size: ${({ theme }) => theme.fontSizes.base};
 `;
 
 export default Footer;

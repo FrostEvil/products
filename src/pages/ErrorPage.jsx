@@ -20,8 +20,8 @@ const ErrorMsg = styled.p`
   height: calc(100vh - 43px);
   width: 100%;
   text-transform: uppercase;
-  font-size: ${(props) => props.theme.fontSizes.xxl};
-  color: ${(props) => props.theme.colors.error};
+  font-size: ${({ theme }) => theme.fontSizes.xxl};
+  color: ${({ theme }) => theme.colors.error};
 `;
 
 export default ErrorPage;

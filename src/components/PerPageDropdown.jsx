@@ -29,7 +29,7 @@ function PerPageDropdown({ perPageOptions, value, onChange }) {
 
   useEffect(() => {
     const handler = (e) => {
-      if (!divEl) return;
+      if (!divEl.current) return;
 
       if (!divEl.current.contains(e.target)) setIsOpen(false);
     };
@@ -64,6 +64,9 @@ function PerPageDropdown({ perPageOptions, value, onChange }) {
 
 const DropDownWrapper = styled.div`
   margin-top: 24px;
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    margin-top: 0;
+  }
 `;
 
 const PerPageLink = styled(Link)`
@@ -72,7 +75,11 @@ const PerPageLink = styled(Link)`
   width: 100%;
   height: 100%;
   text-decoration: none;
-  color: ${(props) => props.theme.colors.text};
+  color: ${({ theme }) => theme.colors.text};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: 4px;
+  }
 `;
 
 export default PerPageDropdown;
