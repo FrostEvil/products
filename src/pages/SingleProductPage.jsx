@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getProduct } from "../api/getProduct";
-import Header from "../components/Header";
-import ContentWrapper from "../components/ContentWrapper";
 import styled from "styled-components";
+import Header from "../components/Header";
 import Footer from "../components/Footer";
+import ContentWrapper from "../components/ContentWrapper";
 
 function SingleProductPage() {
   const { id } = useParams();
   const [product, setProduct] = useState({});
+
+  // pobieranie danych dla SingleProduct wedlug ID
   useEffect(() => {
     (async () => {
       const response = await getProduct(id);

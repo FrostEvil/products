@@ -1,17 +1,17 @@
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import styled from "styled-components";
+import { useContext, useEffect, useState } from "react";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 import { getProductsByPage } from "../api/getProductsByPage";
 import { getSortProducts } from "../api/getSortProducts";
-import { useContext, useEffect, useState } from "react";
-import ProductCard from "../components/ProductCard";
-import ProductCardMobile from "../components/ProductCardMobile";
-import { Link, useLocation, useSearchParams } from "react-router-dom";
-import Pagination from "../components/Pagination";
-import PerPageDropdown from "../components/PerPageDropdown";
-import ContentWrapper from "../components/ContentWrapper";
+import styled from "styled-components";
 import { GoChevronDown, GoChevronUp } from "react-icons/go";
 import { ModalContext } from "../context/ModalContext";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import ContentWrapper from "../components/ContentWrapper";
+import ProductCard from "../components/ProductCard";
+import ProductCardMobile from "../components/ProductCardMobile";
+import Pagination from "../components/Pagination";
+import PerPageDropdown from "../components/PerPageDropdown";
 
 function ProductsListPage() {
   const location = useLocation();
@@ -25,13 +25,14 @@ function ProductsListPage() {
   const [perPageSelection, setPerPageSelection] = useState(null);
   const [searchParams] = useSearchParams();
 
-  const { openModal, isOpen } = useContext(ModalContext);
+  const { openModal } = useContext(ModalContext);
 
   const page = searchParams.get("_page");
   const perPage = searchParams.get("_per_page");
 
   const perPageOptions = ["2", "4", "5", "10", "50"];
 
+  // tabela do ustawienia nagłówków w tabeli oraz wykorzystywana przy sortowaniu produktów
   const config = [
     {
       label: "Title",
@@ -57,8 +58,10 @@ function ProductsListPage() {
     },
   ];
 
+  //obsługa wyświetlania ilości elementów na stronie
   const handleSelect = (option) => setPerPageSelection(option);
 
+  //pobieranie danych z API w zaleznosci od tego czy zmieniamy strone bądź sortujemy elementy
   useEffect(() => {
     (async () => {
       setIsLoading(true);
@@ -90,6 +93,7 @@ function ProductsListPage() {
     })();
   }, [page, perPage, sortOrder, sortBy]);
 
+  // ustawianie parametrów do sortowania oraz ściezki URL
   const setSorting = (label) => {
     if (sortBy && label !== sortBy) {
       setSortOrder("asc");
@@ -119,14 +123,17 @@ function ProductsListPage() {
     }
   };
 
+  // wyrenderowanie produktow dla desktopu
   const renderedProducts = products.map((product) => {
     return <ProductCard product={product} key={product.id} />;
   });
 
+  //wyrenderowanie produktow dla aplikacji mobilnej
   const renderedProductsOnMobile = products.map((product) => {
     return <ProductCardMobile product={product} key={product.id} />;
   });
 
+  // wyswietlenie odpowiednich ikonek dla sortowanych labeli (price & rating)
   function getIcons(sortTag, sortBy, sortOrder) {
     if (sortTag !== sortBy || !isSortResponseOk) {
       return (
@@ -151,6 +158,7 @@ function ProductsListPage() {
     }
   }
 
+  // wyswietlenie naglowkow, dodanie odpowiednich metod i elemnetow w zaleznosci czy wartosci produktow dla danego naglowka moga byc sortowane
   const renderedHeader = config.map((headline) => {
     if (!headline.isSortable) {
       return <ListTh key={headline.label}>{headline.label}</ListTh>;
@@ -179,6 +187,7 @@ function ProductsListPage() {
     }
   });
 
+  // jak wyzej tylko dla wersji mobilnej
   const renderedMobileHeader = config.map((headline) => {
     if (!headline.isSortable) {
       return;

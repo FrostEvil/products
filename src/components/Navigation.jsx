@@ -7,14 +7,17 @@ import { RxCross2 } from "react-icons/rx";
 function Navigation() {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
+  //toglowanie nawigacji open/close
   const handleToggleMobileNav = () => setIsMobileNavOpen(!isMobileNavOpen);
 
+  //zamkniecie nawgacji jesli klikniemy w link
   const handleCloseMobileNav = (e) => {
     if (e.target.tagName === "A") {
       setIsMobileNavOpen(false);
     }
   };
 
+  //zablokowanie scrolowania przy otwartej nawigacji
   useEffect(() => {
     if (isMobileNavOpen) {
       document.body.setAttribute("style", "overflow:hidden");

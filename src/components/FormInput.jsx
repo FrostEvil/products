@@ -1,7 +1,7 @@
 import { useField } from "formik";
 import styled from "styled-components";
-import { boolean, string } from "yup";
 
+//obsluga pojedynczego Inputa w AddProductForm
 function FormInput({ label, ...props }) {
   const [field, meta] = useField(props);
 

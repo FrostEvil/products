@@ -12,6 +12,7 @@ function EditProductPage() {
 
   const [product, setProduct] = useState({});
 
+  //pobieranie z API produktu do edycji
   useEffect(() => {
     (async () => {
       const response = await getProduct(id);

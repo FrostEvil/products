@@ -1,32 +1,34 @@
 import React, { useEffect, useRef, useState } from "react";
-import DropdownPanel from "./DropdownPanel";
-import styled from "styled-components";
 import { Link, useLocation } from "react-router-dom";
+import styled from "styled-components";
+import DropdownPanel from "./DropdownPanel";
 
 function PerPageDropdown({ perPageOptions, value, onChange }) {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const divEl = useRef();
-
+  //pocięcie URLa
   const pagePartUrl = location.search.slice(
     location.search.indexOf("?"),
     location.search.indexOf("?") + 7
   );
-
   const perPagePartUrl = location.search.slice(
     location.search.indexOf("&"),
     location.search.indexOf("&") + 11
   );
-
+  // nadanie paddingu dla styli w rozwijalnym dropdown, rozwiazanie dosc naciagane ale nie zmienialem
   const padding = "true";
 
+  //obsluga otwierania/zamykania dropdown
   const handleClick = () => setIsOpen(!isOpen);
 
+  //wybor ilosci produktow na stronie i przekazanie parametru do rodzica
   const handleOptionClick = (option) => {
     setIsOpen(!isOpen);
     onChange(option);
   };
 
+  // obsluga zamkniecia dropdown jesli klikniemy poza jego obszar
   useEffect(() => {
     const handler = (e) => {
       if (!divEl.current) return;
@@ -41,6 +43,7 @@ function PerPageDropdown({ perPageOptions, value, onChange }) {
     };
   }, []);
 
+  // wyrenderowanie mozliwych opcji dla dropdown
   const renderPageOptions = perPageOptions.map((option) => {
     const pageUrl =
       location.pathname + pagePartUrl + "1" + perPagePartUrl + option;

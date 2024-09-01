@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+// funkcja pozwalajaca wyswietlic pojedynczą opcję dla DropDown
 function DropdownPanel({ children, padding, ...rest }) {
   return (
     <Panel padding={padding} {...rest}>

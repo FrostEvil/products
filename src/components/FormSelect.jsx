@@ -1,6 +1,7 @@
 import { useField } from "formik";
 import styled from "styled-components";
 
+//obsluga pojedynczego Selecta w AddProductForm
 function FormSelect({ label, ...props }) {
   const [field, meta] = useField(props);
 

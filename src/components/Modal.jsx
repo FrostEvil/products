@@ -6,6 +6,7 @@ import ReactDOM from "react-dom";
 function Modal() {
   const { message, isOpen, closeModal } = useContext(ModalContext);
 
+  //zablokowanie scrolowania gdy modal jest wyswietlany
   useEffect(() => {
     if (isOpen) {
       document.body.setAttribute("style", "overflow:hidden");

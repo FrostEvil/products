@@ -4,15 +4,15 @@ import styled from "styled-components";
 function Pagination({ allPages, page }) {
   const location = useLocation();
 
+  //pocięcie URL na czesci
   const pagePartUrl = location.search.slice(
     location.search.indexOf("?"),
     location.search.indexOf("?") + 7
   );
-
   const perPagePartUrl = location.search.slice(location.search.indexOf("&"));
 
+  //wyswietlenie linkow dla paginacji stron od 1 do max oraz nadanie im odpowiedniego pageURL
   const array = new Array(allPages).fill(null);
-
   const renderedPages = array.map((_, index) => {
     const pageUrl =
       location.pathname + pagePartUrl + (index + 1) + perPagePartUrl;

@@ -1,15 +1,16 @@
+import { useContext } from "react";
 import { Form, Formik } from "formik";
 import { basicSchema } from "../schemas/basicSchema";
-import FormInput from "./FormInput";
-import styled from "styled-components";
-import FormSelect from "./FormSelect";
 import { addNewProduct } from "../api/addNewProduct";
+import styled from "styled-components";
 import { ModalContext } from "../context/ModalContext";
-import { useContext } from "react";
+import FormInput from "./FormInput";
+import FormSelect from "./FormSelect";
 
 function AddProductForm() {
   const { openModal } = useContext(ModalContext);
 
+  //obsluga dodawania produktu
   const handleSubmit = async (values, actions) => {
     const result = await addNewProduct(values);
     if (result.id) {

@@ -7,6 +7,7 @@ function DeleteModal() {
   const { isOpen, message, handleDeleteAprroved, handleDeleteRejected } =
     useContext(DeleteContext);
 
+  //zablokowanie scrolowania gdy modal jest wyswietlany
   useEffect(() => {
     if (isOpen) {
       document.body.setAttribute("style", "overflow:hidden");

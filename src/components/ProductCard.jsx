@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { DeleteContext } from "../context/DeleteContext";
 
+//wyswietlenie pojedynczego produktu dla desktopu
 function ProductCard({ product }) {
   const { handleDelateProduct } = useContext(DeleteContext);
 

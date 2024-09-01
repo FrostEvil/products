@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import ContentWrapper from "../components/ContentWrapper";
-import Footer from "../components/Footer";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
+import ContentWrapper from "../components/ContentWrapper";
 import AddProductForm from "../components/AddProductForm";
 
 function AddProductPage() {
